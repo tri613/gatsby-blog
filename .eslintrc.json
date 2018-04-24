@@ -25,6 +25,8 @@
         "valid-typeof": "warn",
         "semi": "warn",
         "quotes": ["warn", "single"],
-        "react/prop-types": ["ignore"]
+        "object-curly-spacing": ["warn", "always"],
+        "react/prop-types": ["ignore"],
+        "indent": ["error", 2]
     }
 }
