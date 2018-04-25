@@ -7,17 +7,17 @@
 // You can delete this file if you're not using it
 
 const path = require('path');
+const _ = require('lodash');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators;
   if (node.internal.type === 'MarkdownRemark') {
-    const postTitle = createFilePath({ node, getNode, basePath: 'posts' });
-    console.log('postTitle', postTitle);
+    const slug = createFilePath({ node, getNode, basePath: 'posts' });
     createNodeField({
       node,
       name: 'slug',
-      value: postTitle,
+      value: slug,
     });
   }
 };
@@ -34,7 +34,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         edges {
           node {
             frontmatter {
-              path
+              title
+              date(formatString:"YYYY/MM")
+            }
+            fields {
+              slug
             }
           }
         }
@@ -47,9 +51,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
-        path: node.frontmatter.path,
+        path: `blog/${node.frontmatter.date}/${_.kebabCase(node.frontmatter.title)}`,
         component: blogPostTemplate,
-        context: {}, // additional data can be passed via context
+        context: {
+          title: node.frontmatter.title
+        }, // additional data can be passed via context
       });
     });
   });
