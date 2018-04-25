@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     createNodeField({
       node,
       name: 'path',
-      value: `blog/${moment(node.frontmatter.date).format('YYYY/MM')}/${kebabCase(node.frontmatter.title)}/`,
+      value: `/blog/${moment(node.frontmatter.date).format('YYYY/MM')}/${kebabCase(node.frontmatter.title)}/`,
     });
 
   }
