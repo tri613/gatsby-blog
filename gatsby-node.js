@@ -26,7 +26,6 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       name: 'path',
       value: `/blog/${moment(node.frontmatter.date).format('YYYY/MM')}/${kebabCase(node.frontmatter.title)}/`,
     });
-
   }
 };
 
