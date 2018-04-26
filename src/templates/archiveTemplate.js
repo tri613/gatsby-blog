@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import map from 'lodash/map';
 
-export default function ArchiveTemplate({ data, pathContext }) {
+export default function ArchiveTemplate({ pathContext }) {
   const nodes = pathContext.group;
   const postsByMonth = nodes.reduce((result, { node }) => {
     const key = node.frontmatter.date;
@@ -11,7 +11,7 @@ export default function ArchiveTemplate({ data, pathContext }) {
   }, {});
 
   let paginations = [];
-  
+
   if (!pathContext.last) {
     const key = pathContext.index + 1;
     paginations.push(
@@ -24,10 +24,13 @@ export default function ArchiveTemplate({ data, pathContext }) {
 
   if (!pathContext.first) {
     const key = pathContext.index - 1;
-    const to = key === 1 ? `/${pathContext.pathPrefix}/` : `/${pathContext.pathPrefix}/${key}/`;
+    const to =
+      key === 1
+        ? `/${pathContext.pathPrefix}/`
+        : `/${pathContext.pathPrefix}/${key}/`;
     paginations.push(
       <React.Fragment key={key}>
-        <Link to={to} >Prev</Link>
+        <Link to={to}>Prev</Link>
         {` `}
       </React.Fragment>
     );
@@ -36,22 +39,20 @@ export default function ArchiveTemplate({ data, pathContext }) {
   return (
     <div>
       <ul>
-        {map(postsByMonth, (nodes, month) =>
+        {map(postsByMonth, (nodes, month) => (
           <li key={month}>
             <h4>{month}</h4>
             <ul>
-              {nodes.map(node => 
+              {nodes.map(node => (
                 <li key={node.frontmatter.title}>
                   <Link to={node.fields.path}>{node.frontmatter.title}</Link>
                 </li>
-              )}
+              ))}
             </ul>
           </li>
-        )}
+        ))}
       </ul>
-      <span>
-        {paginations}
-      </span>
+      <span>{paginations}</span>
     </div>
   );
 }
