@@ -7,7 +7,8 @@
 // You can delete this file if you're not using it
 
 const path = require('path');
-const _ = require('lodash');
+const kebabCase = require('lodash/kebabCase');
+const moment = require('moment');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
@@ -19,12 +20,19 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       name: 'slug',
       value: slug,
     });
+
+    createNodeField({
+      node,
+      name: 'path',
+      value: `/blog/${moment(node.frontmatter.date).format('YYYY/MM')}/${kebabCase(node.frontmatter.title)}/`,
+    });
   }
 };
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
   const blogPostTemplate = path.resolve('src/templates/blogTemplate.js');
+  const tagTemplate = path.resolve('src/templates/tagTemplate.js');
 
   return graphql(`
     {
@@ -38,9 +46,14 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               date(formatString:"YYYY/MM")
             }
             fields {
-              slug
+              path
             }
           }
+        }
+        group(field: frontmatter___tags) {
+          totalCount
+          fieldValue
+          field
         }
       }
     }
@@ -51,11 +64,21 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
-        path: `blog/${node.frontmatter.date}/${_.kebabCase(node.frontmatter.title)}`,
+        path: node.fields.path,
         component: blogPostTemplate,
         context: {
           title: node.frontmatter.title
         }, // additional data can be passed via context
+      });
+    });
+
+    result.data.allMarkdownRemark.group.forEach(row => {
+      createPage({
+        path: `tags/${row.fieldValue}`,
+        component: tagTemplate,
+        context: {
+          tag: row.fieldValue
+        }
       });
     });
   });

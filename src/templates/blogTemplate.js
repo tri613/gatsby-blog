@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'gatsby-link';
 
 export default function Template({ data }) {
   const { markdownRemark } = data;
@@ -8,7 +9,14 @@ export default function Template({ data }) {
     <div>
       <h1>{frontmatter.title}</h1>
       <h2>{frontmatter.date}</h2>
-      <div dangerouslySetInnerHTML={{__html: html}}></div>
+      <h3>
+        {frontmatter.tags.map(tag => 
+          <span key={tag}>
+            <Link to={`/tags/${tag}`}>#{tag}</Link>{' '}
+          </span>
+        )}
+      </h3>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 }
@@ -21,6 +29,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM/DD/YYYY")
         path
         title
+        tags
       }
     }
   }
