@@ -6,7 +6,9 @@
   "dependencies": {
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
+    "gatsby-paginate": "^1.0.14",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-react-next": "^1.0.11",
     "gatsby-plugin-typography": "^1.7.18",
     "gatsby-source-filesystem": "^1.5.33",
     "gatsby-transformer-remark": "^1.7.40",
@@ -32,6 +34,7 @@
   "prettier": {
     "semi": true,
     "singleQuote": true,
-    "tabWidth": 2
+    "tabWidth": 2,
+    "trailingComma": "es5"
   }
 }
