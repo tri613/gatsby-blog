@@ -1,8 +1,15 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import map from 'lodash/map';
 
 export default function ArchiveTemplate({ data, pathContext }) {
   const nodes = pathContext.group;
+  const postsByMonth = nodes.reduce((result, { node }) => {
+    const key = node.frontmatter.date;
+    result[key] = result[key] ? [...result[key], node] : [node];
+    return result;
+  }, {});
+
   let paginations = [];
   
   if (!pathContext.last) {
@@ -29,9 +36,16 @@ export default function ArchiveTemplate({ data, pathContext }) {
   return (
     <div>
       <ul>
-        {nodes.map(({ node }) =>
-          <li key={node.frontmatter.title}>
-            <Link to={node.fields.path}>{node.frontmatter.title}</Link>
+        {map(postsByMonth, (nodes, month) =>
+          <li key={month}>
+            <h4>{month}</h4>
+            <ul>
+              {nodes.map(node => 
+                <li key={node.frontmatter.title}>
+                  <Link to={node.fields.path}>{node.frontmatter.title}</Link>
+                </li>
+              )}
+            </ul>
           </li>
         )}
       </ul>
