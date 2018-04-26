@@ -25,7 +25,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     createNodeField({
       node,
       name: `path`,
-      value: `/blog/${moment(node.frontmatter.date).format(`YYYY/MM`)}/${kebabCase(node.frontmatter.title)}/`,
+      value: `/posts/${moment(node.frontmatter.date).format(`YYYY/MM`)}/${kebabCase(node.frontmatter.title)}/`,
     });
   }
 };
@@ -88,7 +88,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       createPage: createPage,
       pageTemplate: `src/templates/archiveTemplate.js`,
       pageLength: 10, // This is optional and defaults to 10 if not used
-      pathPrefix: `archive`, // This is optional and defaults to an empty string if not used
+      pathPrefix: `archives`, // This is optional and defaults to an empty string if not used
       context: {} // This is optional and defaults to an empty object if not used
     });
   });
