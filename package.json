@@ -11,6 +11,7 @@
     "gatsby-source-filesystem": "^1.5.33",
     "gatsby-transformer-remark": "^1.7.40",
     "react-helmet": "^5.2.0",
+    "typography-theme-github": "^0.15.10",
     "typography-theme-stern-grove": "^0.15.10"
   },
   "keywords": [

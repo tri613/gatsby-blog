@@ -1,0 +1,1 @@
+export const TAGS_ROOT_URL = `/tags`;
