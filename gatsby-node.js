@@ -6,33 +6,34 @@
 
 // You can delete this file if you're not using it
 
-const path = require('path');
-const kebabCase = require('lodash/kebabCase');
-const moment = require('moment');
-const { createFilePath } = require('gatsby-source-filesystem');
+const path = require(`path`);
+const kebabCase = require(`lodash/kebabCase`);
+const moment = require(`moment`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
+const createPaginatedPages = require(`gatsby-paginate`);
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators;
-  if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({ node, getNode, basePath: 'posts' });
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `posts` });
     createNodeField({
       node,
-      name: 'slug',
+      name: `slug`,
       value: slug,
     });
 
     createNodeField({
       node,
-      name: 'path',
-      value: `/blog/${moment(node.frontmatter.date).format('YYYY/MM')}/${kebabCase(node.frontmatter.title)}/`,
+      name: `path`,
+      value: `/blog/${moment(node.frontmatter.date).format(`YYYY/MM`)}/${kebabCase(node.frontmatter.title)}/`,
     });
   }
 };
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
-  const blogPostTemplate = path.resolve('src/templates/blogTemplate.js');
-  const tagTemplate = path.resolve('src/templates/tagTemplate.js');
+  const blogPostTemplate = path.resolve(`src/templates/blogTemplate.js`);
+  const tagTemplate = path.resolve(`src/templates/tagTemplate.js`);
 
   return graphql(`
     {
@@ -80,6 +81,15 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           tag: row.fieldValue
         }
       });
+    });
+
+    createPaginatedPages({
+      edges: result.data.allMarkdownRemark.edges,
+      createPage: createPage,
+      pageTemplate: `src/templates/archiveTemplate.js`,
+      pageLength: 10, // This is optional and defaults to 10 if not used
+      pathPrefix: `archive`, // This is optional and defaults to an empty string if not used
+      context: {} // This is optional and defaults to an empty object if not used
     });
   });
 };

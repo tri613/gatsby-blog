@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import { TAGS_ROOT_URL } from './../utils/routes';
 
-export default function Template({ data }) {
+export default function BlogTemplate({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 

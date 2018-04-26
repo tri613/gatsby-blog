@@ -1,21 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter'
+    title: `Tri's blog`
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-react-next`,
+    `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/`,
-        name: 'src'
+        name: `src`
       }
     },
-    'gatsby-transformer-remark',
+    `gatsby-transformer-remark`,
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: 'src/utils/typography'
+        pathToConfigModule: `src/utils/typography`
       }
     }
   ]
