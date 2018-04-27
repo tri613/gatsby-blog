@@ -94,3 +94,15 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     });
   });
 };
+
+exports.modifyWebpackConfig = function ({ config, env }) {
+  config.merge({
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src')
+      },
+      extensions: ['', '.js', '.jsx', '.json'],
+    }
+  });
+  return config;
+};
