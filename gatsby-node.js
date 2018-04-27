@@ -34,6 +34,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
   const blogPostTemplate = path.resolve(`src/templates/blogTemplate.js`);
   const tagTemplate = path.resolve(`src/templates/tagTemplate.js`);
+  const archivesTemplate = path.resolve(`src/templates/archivesTemplate.js`);
 
   return graphql(`
     {
@@ -86,7 +87,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     createPaginatedPages({
       edges: result.data.allMarkdownRemark.edges,
       createPage: createPage,
-      pageTemplate: `src/templates/archiveTemplate.js`,
+      pageTemplate: archivesTemplate,
       pageLength: 10, // This is optional and defaults to 10 if not used
       pathPrefix: `archives`, // This is optional and defaults to an empty string if not used
       context: {} // This is optional and defaults to an empty object if not used
