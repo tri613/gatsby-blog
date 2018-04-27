@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Provider, Container } from "rebass";
-
-import Header from '@/components/header';
+import { Provider, Container } from 'rebass';
 
 import globalStyles from '@/styles/globalStyles';
 import theme from '@/styles/theme';
@@ -19,7 +17,6 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
     <Container>
       {children()}
     </Container>

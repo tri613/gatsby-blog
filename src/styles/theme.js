@@ -25,13 +25,18 @@ const MediaThemedH1 = styled.h1`
 `;
 */
 
+const colors = {
+  primary: '#00D9C0',
+  secondary: '#FF4245',
+  dark: '#343447',
+  light: '#FFFDF9',
+  shade: '#EAE9E5',
+};
+colors.bg = colors.shade;
+
 // Pass media template via theme object and Styled Components ThemeProvider
 const theme = {
-  primary: "#00D9C0",
-  secondary: "#FF4245",
-  dark: "#343447",
-  light: "#FFFFF3",
-  shade: "#EAE9E5",
+  colors,
   media,
 };
 
