@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { theme as defaultTheme } from 'rebass';
 
 const sizes = {
   desktop: 80,
@@ -26,6 +27,7 @@ const MediaThemedH1 = styled.h1`
 */
 
 const colors = {
+  ...defaultTheme.colors,
   primary: '#00D9C0',
   secondary: '#FF4245',
   dark: '#343447',

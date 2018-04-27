@@ -17,7 +17,7 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Container>
+    <Container pt={5}>
       {children()}
     </Container>
   </Provider>

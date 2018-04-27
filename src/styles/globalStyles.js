@@ -8,6 +8,5 @@ export default () => injectGlobal`
     box-sizing: border-box;
   }
   body {
-    background-color: ${theme.colors.bg}
   }
 `;
