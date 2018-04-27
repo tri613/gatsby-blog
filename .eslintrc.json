@@ -24,7 +24,6 @@
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "semi": "warn",
-        "quotes": ["warn", "single"],
         "object-curly-spacing": ["warn", "always"],
         "react/prop-types": ["ignore"],
         "indent": ["error", 2]

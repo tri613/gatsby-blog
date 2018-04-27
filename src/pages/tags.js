@@ -8,7 +8,7 @@ export default function Tags({ data }) {
     <ul>
       {data.allMarkdownRemark.group.map(row => <li key={row.fieldValue}>
         <Link to={`/tags/${row.fieldValue}`}>
-          #{row.fieldValue} - {row.totalCount} results
+              #{row.fieldValue} - {row.totalCount} results
         </Link>
       </li>)}
     </ul>

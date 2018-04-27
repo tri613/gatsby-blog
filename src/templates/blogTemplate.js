@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-export default function Template({ data }) {
+export default function BlogTemplate({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 
@@ -12,7 +12,8 @@ export default function Template({ data }) {
       <h3>
         {frontmatter.tags.map(tag => 
           <span key={tag}>
-            <Link to={`/tags/${tag}`}>#{tag}</Link>{' '}
+            <Link to={`/tags/${tag}`}>#{tag}</Link>
+            {` `}
           </span>
         )}
       </h3>

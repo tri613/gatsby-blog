@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Link from 'gatsby-link';
 
-const Tag = ({ pathContext, data }) => {
+const TagTemplate = ({ pathContext, data }) => {
   const { tag } = pathContext;
   const { edges } = data.allMarkdownRemark;
 
@@ -21,7 +21,7 @@ const Tag = ({ pathContext, data }) => {
   );
 };
 
-export default Tag;
+export default TagTemplate;
 
 export const query = graphql`
   query TagPageQuery($tag: [String]) {
