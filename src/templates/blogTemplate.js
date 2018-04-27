@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { TAGS_ROOT_URL } from './../utils/routes';
 
 export default function BlogTemplate({ data }) {
   const { markdownRemark } = data;
@@ -13,7 +12,7 @@ export default function BlogTemplate({ data }) {
       <h3>
         {frontmatter.tags.map(tag => 
           <span key={tag}>
-            <Link to={`${TAGS_ROOT_URL}/${tag}`}>#{tag}</Link>
+            <Link to={`/tags/${tag}`}>#{tag}</Link>
             {` `}
           </span>
         )}
