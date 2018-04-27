@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { ThemeProvider } from 'styled-components';
+import { Provider, Container } from 'rebass';
 
 import globalStyles from '@/styles/globalStyles';
 import theme from '@/styles/theme';
@@ -9,18 +9,18 @@ import theme from '@/styles/theme';
 globalStyles();
 
 const Layout = ({ children, data }) => (
-  <ThemeProvider theme={theme}>
-    <React.Fragment>
-      <Helmet
-        title={data.site.siteMetadata.title}
-        meta={[
-          { name: 'description', content: 'Sample' },
-          { name: 'keywords', content: 'sample, something' },
-        ]}
-      />
-      <div>{children()}</div>
-    </React.Fragment>
-  </ThemeProvider>
+  <Provider theme={theme}>
+    <Helmet
+      title={data.site.siteMetadata.title}
+      meta={[
+        { name: 'description', content: 'Sample' },
+        { name: 'keywords', content: 'sample, something' },
+      ]}
+    />
+    <Container>
+      {children()}
+    </Container>
+  </Provider>
 );
 
 Layout.propTypes = {
