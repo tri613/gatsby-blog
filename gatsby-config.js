@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-next`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -16,7 +17,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        pathToConfigModule: `src/styles/typography`,
       },
     },
   ],
