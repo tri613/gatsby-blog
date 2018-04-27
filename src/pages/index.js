@@ -1,10 +1,11 @@
 import React from 'react';
+import PrimaryButton from '@/components/primaryButton';
 
 const IndexPage = () => (
   <div>
     <h1>Hi people</h1>
-    <p>This blog is still under construction...</p>
-    <button>Test</button>
+    <p>施工中rrrr</p>
+    <PrimaryButton>Test</PrimaryButton>
   </div>
 );
 
