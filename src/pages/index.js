@@ -23,6 +23,7 @@ query IndexPageQuery {
   allMarkdownRemark(
     limit: 5
     sort: {fields: [frontmatter___date], order: DESC}
+    filter: {frontmatter: { published: { eq: true} } }
     ) {
       edges {
         node {

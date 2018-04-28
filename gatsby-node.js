@@ -40,12 +40,13 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     {
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
+        filter: {frontmatter: { published: { eq: true} } }
       ) {
         edges {
           node {
             frontmatter {
               title
-              date(formatString:"YYYY/MM")
+              date
             }
             fields {
               path
@@ -76,7 +77,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     result.data.allMarkdownRemark.group.forEach(row => {
       createPage({
-        path: `tags/${row.fieldValue}`,
+        path: `tags/${row.fieldValue}/`,
         component: tagTemplate,
         context: {
           tag: row.fieldValue
