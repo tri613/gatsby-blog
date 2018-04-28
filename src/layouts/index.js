@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import './../styles/global.css';
 
 import Header from '../components/header';
 
@@ -13,7 +14,6 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
     <div
       style={{
         margin: '0 auto',
@@ -22,6 +22,7 @@ const Layout = ({ children, data }) => (
         paddingTop: 0,
       }}
     >
+      <Header siteTitle={data.site.siteMetadata.title} />
       {children()}
     </div>
   </div>
