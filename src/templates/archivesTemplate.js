@@ -12,16 +12,6 @@ export default function ArchiveTemplate({ pathContext }) {
 
   let paginations = [];
 
-  if (!pathContext.last) {
-    const key = pathContext.index + 1;
-    paginations.push(
-      <React.Fragment key={key}>
-        <Link to={`/${pathContext.pathPrefix}/${key}/`}>Next</Link>
-        {` `}
-      </React.Fragment>
-    );
-  }
-
   if (!pathContext.first) {
     const key = pathContext.index - 1;
     const to =
@@ -30,8 +20,19 @@ export default function ArchiveTemplate({ pathContext }) {
         : `/${pathContext.pathPrefix}/${key}/`;
     paginations.push(
       <React.Fragment key={key}>
-        <Link to={to}>Prev</Link>
-        {` `}
+        <Link to={to}>{'\<'} Prev</Link>
+      </React.Fragment>
+    );
+  }
+
+  if (!pathContext.last) {
+    const key = pathContext.index + 1;
+    if (paginations.length) {
+      paginations.push(<span style={{ margin: '0 .5rem' }}>|</span>);
+    }
+    paginations.push(
+      <React.Fragment key={key}>
+        <Link to={`/${pathContext.pathPrefix}/${key}/`}>Next {'\>'} </Link>
       </React.Fragment>
     );
   }
@@ -52,7 +53,7 @@ export default function ArchiveTemplate({ pathContext }) {
           </li>
         ))}
       </ul>
-      <span>{paginations}</span>
+      <span style={{ float: 'right' }}>{paginations}</span>
     </div>
   );
 }
