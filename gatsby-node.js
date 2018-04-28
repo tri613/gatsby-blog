@@ -25,7 +25,7 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     createNodeField({
       node,
       name: `path`,
-      value: `/post/${moment(node.frontmatter.date).format(`YYYY/MM`)}/${kebabCase(node.frontmatter.title)}/`,
+      value: `/post/${moment(node.frontmatter.date).format(`YYYY-MM-DD`)}-${kebabCase(node.frontmatter.title)}/`,
     });
   }
 };

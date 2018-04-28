@@ -23,7 +23,7 @@ const Header = ({ siteTitle }) => (
       </a>.
     </p>
     <nav style={{ margin: '1rem 0' }}>
-      <Link to="/">Home</Link> / <Link to="/archives">Archives</Link>
+      <Link to="/">Home</Link> / <Link to="/archives/">Archives</Link>
     </nav>
     <hr />
   </header>
