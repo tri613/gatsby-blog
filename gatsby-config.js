@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Tri's blog`,
+    title: `Tri's`,
+    description: '一些筆記和雜談'
   },
   plugins: [
     `gatsby-plugin-react-next`,
