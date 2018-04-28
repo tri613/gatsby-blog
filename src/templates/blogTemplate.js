@@ -6,7 +6,7 @@ export default function BlogTemplate({ data }) {
   const { frontmatter, html } = markdownRemark;
 
   return <article>
-    <h1 style={{ marginTop: '2rem' }}>{frontmatter.title}</h1>
+    <h1>{frontmatter.title}</h1>
     <section style={{ marginBottom: '1.5rem' }}>
       {frontmatter.date}
       <br />
