@@ -1,33 +1,32 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Link from 'gatsby-link';
 
 const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </div>
-)
+  <header>
+    <h3 style={{ marginBottom: '.8rem' }}>{siteTitle}</h3>
+    {/* <h4 style={{ marginTop: '0' }}>一些筆記和雜談</h4> */}
+    <p>
+      Hi, I'm Trina. Find me on{' '}
+      <a
+        href="https://twitter.com/tri613"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        twitter
+      </a>{' '} or {' '}
+      <a
+        href="https://github.com/tri613"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        github
+      </a>.
+    </p>
+    <nav style={{ margin: '1rem 0' }}>
+      <Link to="/">Home</Link> / <Link to="/archives">Archives</Link>
+    </nav>
+    <hr />
+  </header>
+);
 
-export default Header
+export default Header;
