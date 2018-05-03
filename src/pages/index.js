@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 
 const IndexPage = ({ data }) => (
   <div>
-    <h1>Recent Posts</h1>
+    <h2>Recent Posts</h2>
     <ul>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <li key={node.id}>

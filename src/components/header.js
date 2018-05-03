@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 
 const Header = ({ siteTitle }) => (
   <header>
-    <h3 style={{ marginBottom: '.8rem' }}>{siteTitle}</h3>
+    <h1 style={{ marginBottom: '.8rem' }}>{siteTitle}</h1>
     {/* <h4 style={{ marginTop: '0' }}>一些筆記和雜談</h4> */}
     <p>
       Hi, I'm Trina. Find me on{' '}
