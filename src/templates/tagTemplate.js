@@ -9,7 +9,7 @@ const TagTemplate = ({ pathContext, data }) => {
 
   return (
     <div>
-      <h1>#{tag}</h1>
+      <h2>#{tag}</h2>
       <ul>
         {edges.map(({ node }) => 
           <li key={node.id}>
