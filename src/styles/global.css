@@ -5,3 +5,8 @@
 ul {
   margin-left: 1.5rem;
 }
+
+:not(pre) > code[class*="language-"], 
+pre[class*="language-"] {
+  border-radius: .1rem;
+}

@@ -13,7 +13,16 @@ module.exports = {
         name: `src`,
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve:  `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`
+          }
+        ]
+      }
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
