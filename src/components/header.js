@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import { Divider, Button } from 'antd';
 
 const Header = ({ siteTitle }) => (
   <header>
@@ -13,7 +14,8 @@ const Header = ({ siteTitle }) => (
         rel="noopener noreferrer"
       >
         twitter
-      </a>{' '} or {' '}
+      </a>{' '}
+      or{' '}
       <a
         href="https://github.com/tri613"
         target="_blank"
@@ -25,7 +27,8 @@ const Header = ({ siteTitle }) => (
     <nav style={{ margin: '1rem 0' }}>
       <Link to="/">Home</Link> / <Link to="/archives/">Archives</Link>
     </nav>
-    <hr />
+    <Button type="primary">Try me</Button>
+    <Divider />
   </header>
 );
 

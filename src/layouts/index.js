@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import 'prismjs/themes/prism-tomorrow.css';
-import './../styles/global.css';
+import 'antd/dist/antd.less';
 
 import Header from '../components/header';
 
@@ -11,7 +11,7 @@ const Layout = ({ children, data }) => (
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
-        { name: 'description', content: data.site.siteMetadata.description }
+        { name: 'description', content: data.site.siteMetadata.description },
       ]}
     />
     <div
