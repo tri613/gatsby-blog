@@ -12,7 +12,7 @@ import PostList from './../components/postList';
 export default function ArchiveTemplate({ pathContext }) {
   const nodes = pathContext.group;
   const postsByMonth = nodes.reduce((result, { node }) => {
-    const key = moment(node.frontmatter.datetime).format('YYYY/MM/DD');
+    const key = moment(node.frontmatter.datetime).format('YYYY/MM');
     result[key] = result[key] ? [...result[key], node] : [node];
     return result;
   }, {});
