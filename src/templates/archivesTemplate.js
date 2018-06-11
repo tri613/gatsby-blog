@@ -2,7 +2,7 @@ import React from 'react';
 import { navigateTo } from 'gatsby-link';
 import map from 'lodash/map';
 import moment from 'moment';
-import { Pagination } from 'antd';
+import { Pagination, Icon } from 'antd';
 
 import { Content } from './../components/layout';
 import { PageTitle } from './../components/title';
@@ -20,7 +20,9 @@ export default function ArchiveTemplate({ pathContext }) {
     <Content>
       {map(postsByMonth, (nodes, month) => (
         <div style={{ marginBottom: `1.5rem` }} key={month}>
-          <PageTitle>{month}</PageTitle>
+          <PageTitle>
+            <Icon type="inbox" /> {month}
+          </PageTitle>
           <PostList nodes={nodes} />
         </div>
       ))}

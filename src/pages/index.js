@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from 'antd/lib/icon';
 
 import { PageTitle } from './../components/title';
 import Post from './../components/post';
@@ -6,7 +7,9 @@ import { blogPostQuery } from './../utils/query';
 
 const IndexPage = ({ data }) => (
   <div>
-    <PageTitle>Recent Posts</PageTitle>
+    <PageTitle>
+      <Icon type="paper-clip" /> Recent Posts
+    </PageTitle>
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Post
         readmore={true}
