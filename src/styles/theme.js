@@ -8,7 +8,8 @@ const colors = {
   primary07: `#08979c`,
   primary08: `#006d75`,
   primary09: `#00474f`,
-  primary10: `#002329`
+  primary10: `#002329`,
+  bg: `#f5f5f5`
 };
 
 export default {

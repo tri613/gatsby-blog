@@ -6,7 +6,9 @@ import BackTop from 'antd/lib/back-top';
 
 import 'prismjs/themes/prism-tomorrow.css';
 import 'antd/dist/antd.less';
-import './../styles/global.css';
+import globalStyle from './../styles/global.js';
+globalStyle();
+// import './../styles/global.css';
 
 import theme from './../styles/theme';
 import Header from '../components/header';

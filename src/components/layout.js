@@ -4,16 +4,15 @@ const centerBlock = `
   margin: 0 auto;
   max-width: 680px;
   padding: 0px 1.0875rem;
-  width: 90%;
+  width: 100%;
 `;
 
 export const Wrapper = styled.div`
   border-top: 2px solid ${props => props.theme.colors.primary06};
-  background-color: #f5f5f5;
+  background-color: ${props => props.theme.colors.bg};
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 0 1rem;
 `;
 
 export const Center = styled.div`
