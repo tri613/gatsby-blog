@@ -1,13 +1,15 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { Href, NewTabHref } from './../components/href';
 import { Divider, Icon } from 'antd';
+
+import { Href, NewTabHref } from './../components/href';
+import { SiteTitle } from './../components/title';
 
 const Header = ({ siteTitle }) => (
   <header style={{ paddingTop: '1.5rem' }}>
-    <Link to="/">
-      <h1 style={{ marginBottom: '.8rem' }}>{siteTitle}</h1>
-    </Link>
+    <SiteTitle style={{ marginBottom: '.8rem' }} to="/">
+      {siteTitle}
+    </SiteTitle>
     <p>
       Hi, I'm Trina. Find me on
       <NewTabHref href="https://twitter.com/tri613">
