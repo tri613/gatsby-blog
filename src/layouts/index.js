@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
+import { BackTop } from 'antd';
 
 import 'prismjs/themes/prism-tomorrow.css';
 import 'antd/dist/antd.less';
@@ -28,6 +29,7 @@ const Layout = ({ children, data }) => (
         <Center>
           <Footer>© 2018 Trina Lu</Footer>
         </Center>
+        <BackTop />
       </Wrapper>
     </React.Fragment>
   </ThemeProvider>
