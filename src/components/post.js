@@ -62,7 +62,7 @@ export const Post = ({ node, readmore = false, ...rest }) => {
           <div style={{ marginTop: `2rem` }}>
             <Link to={node.fields.path}>
               <ReadMoreButton type="primary" ghost>
-                Read more...
+                Read more
               </ReadMoreButton>
             </Link>
           </div>
