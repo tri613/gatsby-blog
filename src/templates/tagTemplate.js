@@ -1,7 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import Link from 'gatsby-link';
+import List from 'antd/lib/list';
+import Icon from 'antd/lib/icon';
+
+import { PageTitle } from './../components/title';
+import PostList from './../components/postList';
 
 const TagTemplate = ({ pathContext, data }) => {
   const { tag } = pathContext;
@@ -9,14 +12,11 @@ const TagTemplate = ({ pathContext, data }) => {
 
   return (
     <div>
-      <h2>#{tag}</h2>
-      <ul>
-        {edges.map(({ node }) => 
-          <li key={node.id}>
-            <Link to={node.fields.path}>{node.frontmatter.title}</Link>
-          </li>
-        )}
-      </ul>
+      <PageTitle>
+        <Icon type="tag" style={{ marginRight: `3px` }} />
+        {tag}
+      </PageTitle>
+      <PostList nodes={edges.map(edge => edge.node)} />
     </div>
   );
 };
@@ -25,12 +25,14 @@ export default TagTemplate;
 
 export const query = graphql`
   query TagPageQuery($tag: [String]) {
-    allMarkdownRemark(filter: {frontmatter: { tags: { in: $tag } }}) {
+    allMarkdownRemark(filter: { frontmatter: { tags: { in: $tag } } }) {
       edges {
         node {
           id
+          html
           frontmatter {
             title
+            tags
           }
           fields {
             path

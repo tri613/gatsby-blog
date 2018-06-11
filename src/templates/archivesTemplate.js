@@ -1,11 +1,16 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import map from 'lodash/map';
+import moment from 'moment';
+
+import { Content } from './../components/layout';
+import { PageTitle } from './../components/title';
+import PostList from './../components/postList';
 
 export default function ArchiveTemplate({ pathContext }) {
   const nodes = pathContext.group;
   const postsByMonth = nodes.reduce((result, { node }) => {
-    const key = node.frontmatter.date;
+    const key = moment(node.frontmatter.datetime).format('YYYY/MM/DD');
     result[key] = result[key] ? [...result[key], node] : [node];
     return result;
   }, {});
@@ -20,7 +25,7 @@ export default function ArchiveTemplate({ pathContext }) {
         : `/${pathContext.pathPrefix}/${key}/`;
     paginations.push(
       <React.Fragment key={key}>
-        <Link to={to}>{'\<'} Prev</Link>
+        <Link to={to}>{'<'} Prev</Link>
       </React.Fragment>
     );
   }
@@ -32,28 +37,20 @@ export default function ArchiveTemplate({ pathContext }) {
     }
     paginations.push(
       <React.Fragment key={key}>
-        <Link to={`/${pathContext.pathPrefix}/${key}/`}>Next {'\>'} </Link>
+        <Link to={`/${pathContext.pathPrefix}/${key}/`}>Next {'>'} </Link>
       </React.Fragment>
     );
   }
 
   return (
-    <div>
-      <ul>
-        {map(postsByMonth, (nodes, month) => (
-          <li key={month}>
-            <h4>{month}</h4>
-            <ul>
-              {nodes.map(node => (
-                <li key={node.frontmatter.title}>
-                  <Link to={node.fields.path}>{node.frontmatter.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+    <Content>
+      {map(postsByMonth, (nodes, month) => (
+        <div style={{ marginBottom: `1.5rem` }} key={month}>
+          <PageTitle>{month}</PageTitle>
+          <PostList nodes={nodes} />
+        </div>
+      ))}
       <span style={{ float: 'right' }}>{paginations}</span>
-    </div>
+    </Content>
   );
 }
