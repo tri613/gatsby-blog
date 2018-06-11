@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
-import { BackTop } from 'antd';
+import BackTop from 'antd/lib/back-top';
 
 import 'prismjs/themes/prism-tomorrow.css';
 import 'antd/dist/antd.less';

@@ -1,11 +1,10 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { Icon, Card, Tag, Divider, Button } from 'antd';
-// import Icon from 'antd/lib/icon';
-// import Card from 'antd/lib/card';
-// import Tag from 'antd/lib/tag';
-// import Divider from 'antd/lib/divider';
-// import Button from 'antd/lib/button';
+import Icon from 'antd/lib/icon';
+import Card from 'antd/lib/card';
+import Tag from 'antd/lib/tag';
+import Divider from 'antd/lib/divider';
+import Button from 'antd/lib/button';
 
 import moment from 'moment';
 import styled, { withTheme } from 'styled-components';

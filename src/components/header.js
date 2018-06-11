@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { Divider, Icon } from 'antd';
+import Divider from 'antd/lib/divider';
+import Icon from 'antd/lib/icon';
 
 import { Href, NewTabHref } from './../components/href';
 import { SiteTitle } from './../components/title';

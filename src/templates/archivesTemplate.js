@@ -2,7 +2,8 @@ import React from 'react';
 import { navigateTo } from 'gatsby-link';
 import map from 'lodash/map';
 import moment from 'moment';
-import { Pagination, Icon } from 'antd';
+import Pagination from 'antd/lib/pagination';
+import Icon from 'antd/lib/icon';
 
 import { Content } from './../components/layout';
 import { PageTitle } from './../components/title';
