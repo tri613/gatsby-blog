@@ -1,11 +1,16 @@
 import React from 'react';
 import List from 'antd/lib/list';
 import Link from 'gatsby-link';
+import styled from 'styled-components';
 
 import { Timestamp } from './post';
 
+const WhiteList = styled(List)`
+  background-color: rgba(255, 255, 255, 0.4);
+`;
+
 const PostList = ({ nodes }) => (
-  <List
+  <WhiteList
     bordered
     itemLayout="vertical"
     dataSource={nodes}

@@ -5,7 +5,9 @@ import { Divider, Icon } from 'antd';
 
 const Header = ({ siteTitle }) => (
   <header style={{ paddingTop: '1.5rem' }}>
-    <h1 style={{ marginBottom: '.8rem' }}>{siteTitle}</h1>
+    <Link to="/">
+      <h1 style={{ marginBottom: '.8rem' }}>{siteTitle}</h1>
+    </Link>
     <p>
       Hi, I'm Trina. Find me on
       <NewTabHref href="https://twitter.com/tri613">

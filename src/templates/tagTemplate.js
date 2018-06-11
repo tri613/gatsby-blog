@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import List from 'antd/lib/list';
 import Icon from 'antd/lib/icon';
 
 import { PageTitle } from './../components/title';
@@ -13,8 +11,7 @@ const TagTemplate = ({ pathContext, data }) => {
   return (
     <div>
       <PageTitle>
-        <Icon type="tag" style={{ marginRight: `3px` }} />
-        {tag}
+        <Icon type="tag" style={{ marginRight: `3px` }} /> # {tag}
       </PageTitle>
       <PostList nodes={edges.map(edge => edge.node)} />
     </div>
