@@ -1,20 +1,29 @@
 module.exports = {
   siteMetadata: {
-    title: `Tri's`,
+    title: `Beer and peanuts`,
     description: '一些筆記和雜談'
   },
   plugins: [
     `gatsby-plugin-react-next`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        theme: {
+          'primary-color': '#13c2c2'
+        }
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/`,
-        name: `src`,
-      },
+        name: `src`
+      }
     },
     {
-      resolve:  `gatsby-transformer-remark`,
+      resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
@@ -22,12 +31,6 @@ module.exports = {
           }
         ]
       }
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/styles/typography`,
-      },
-    },
-  ],
+    }
+  ]
 };

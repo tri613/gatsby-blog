@@ -1,40 +1,38 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import Icon from 'antd/lib/icon';
+
+import { PageTitle } from './../components/title';
+import Post from './../components/post';
+import { blogPostQuery } from './../utils/query';
 
 const IndexPage = ({ data }) => (
   <div>
-    <h2>Recent Posts</h2>
-    <ul>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <li key={node.id}>
-          <Link to={node.fields.path}>
-            {node.frontmatter.title} - {node.frontmatter.date}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <PageTitle>
+      <Icon type="paper-clip" /> Recent Posts
+    </PageTitle>
+    {data.allMarkdownRemark.edges.map(({ node }) => (
+      <Post
+        readmore={true}
+        key={node.id}
+        node={node}
+        style={{ marginBottom: `1rem` }}
+      />
+    ))}
   </div>
 );
 
 export default IndexPage;
 
 export const indexQuery = graphql`
-query IndexPageQuery {
-  allMarkdownRemark(
-    limit: 5
-    sort: {fields: [frontmatter___date], order: DESC}
-    filter: {frontmatter: { published: { eq: true} } }
+  query IndexPageQuery {
+    allMarkdownRemark(
+      limit: 5
+      sort: { fields: [frontmatter___datetime], order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
     ) {
       edges {
         node {
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY/MM/DD")
-          }
-          fields {
-            path
-          }
+          ...BlogPost
         }
       }
     }
