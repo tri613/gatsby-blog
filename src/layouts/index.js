@@ -8,7 +8,6 @@ import 'prismjs/themes/prism-tomorrow.css';
 import 'antd/dist/antd.less';
 import globalStyle from './../styles/global.js';
 globalStyle();
-// import './../styles/global.css';
 
 import theme from './../styles/theme';
 import Header from '../components/header';
