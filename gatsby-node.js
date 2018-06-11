@@ -19,13 +19,15 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     createNodeField({
       node,
       name: `slug`,
-      value: slug,
+      value: slug
     });
 
     createNodeField({
       node,
       name: `path`,
-      value: `/post/${moment(node.frontmatter.date).format(`YYYY-MM-DD`)}-${kebabCase(node.frontmatter.title)}/`,
+      value: `/post/${moment(node.frontmatter.datetime).format(
+        `YYYY-MM-DD`
+      )}-${kebabCase(node.frontmatter.title)}/`
     });
   }
 };
@@ -39,14 +41,15 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   return graphql(`
     {
       allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        filter: {frontmatter: { published: { eq: true} } }
+        sort: { order: DESC, fields: [frontmatter___datetime] }
+        filter: { frontmatter: { published: { eq: true } } }
       ) {
         edges {
           node {
+            id
             frontmatter {
               title
-              date(formatString: "YYYY/MM")
+              datetime
             }
             fields {
               path
@@ -70,8 +73,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         path: node.fields.path,
         component: blogPostTemplate,
         context: {
+          id: node.id,
           title: node.frontmatter.title
-        }, // additional data can be passed via context
+        } // additional data can be passed via context
       });
     });
 
