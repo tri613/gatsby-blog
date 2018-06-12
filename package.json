@@ -8,11 +8,14 @@
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
     "netlify-cms": "^1.8.4",
+    "polished": "^1.9.2",
     "prismjs": "^1.14.0",
     "react-helmet": "^5.2.0",
     "styled-components": "^3.3.2"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -23,12 +26,12 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.7.0",
-    "gatsby-plugin-netlify-cms": "^2.0.1",
-    "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-paginate": "^1.0.14",
     "gatsby-plugin-less": "^1.1.8",
+    "gatsby-plugin-netlify-cms": "^2.0.1",
     "gatsby-plugin-react-helmet": "^2.0.10",
     "gatsby-plugin-react-next": "^1.0.11",
+    "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-plugin-typography": "^1.7.18",
     "gatsby-remark-prismjs": "^2.0.2",
     "gatsby-source-filesystem": "^1.5.33",
