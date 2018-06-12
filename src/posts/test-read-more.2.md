@@ -25,7 +25,7 @@ Promise.all([p1, p2, p3])
   .catch(console.error) // error: 'rejected p2'
 ```
 
-<!--read more-->
+<!-- more -->
 
 Some secret message here
 

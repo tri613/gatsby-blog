@@ -26,7 +26,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         excerpt_separator: `<!-- more -->`,
-        plugins: [`gatsby-remark-prismjs`, `gatsby-remark-twemoji`]
+        plugins: [`gatsby-remark-prismjs`, `gatsby-remark-twemoji-shortcut`]
       }
     },
     {

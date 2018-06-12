@@ -34,6 +34,7 @@
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-plugin-typography": "^1.7.18",
     "gatsby-remark-prismjs": "^2.0.2",
+    "gatsby-remark-twemoji-shortcut": "git+https://github.com/tri613/gatsby-remark-twemoji-shortcut.git",
     "gatsby-source-filesystem": "^1.5.33",
     "gatsby-transformer-remark": "^1.7.40",
     "prettier": "^1.12.0"

@@ -5,4 +5,5 @@ tags: ["hello", "greeting", "cool"]
 published: true
 ---
 
-Hi! This is my first gatsby blog. Cool!
+Hi! This is my first gatsby blog. Cool! :sagittarius: :1st_place_medal: :sparkles:
+:smile:
