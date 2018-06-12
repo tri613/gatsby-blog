@@ -27,3 +27,12 @@ export const extractBlogPostProperties = node => {
     url: node.fields.path
   };
 };
+
+export const siteMetaQuery = graphql`
+  fragment SiteMeta on Site {
+    siteMetadata {
+      title
+      description
+    }
+  }
+`;

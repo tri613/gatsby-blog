@@ -4,12 +4,15 @@ import map from 'lodash/map';
 import moment from 'moment';
 import Pagination from 'antd/lib/pagination';
 import Icon from 'antd/lib/icon';
+import Helmet from 'react-helmet';
 
 import { Content } from './../components/layout';
 import { PageTitle } from './../components/title';
 import PostList from './../components/postList';
 
-export default function ArchiveTemplate({ pathContext }) {
+import { siteMetaQuery } from './../utils/query';
+
+export default function ArchiveTemplate({ pathContext, data }) {
   const nodes = pathContext.group;
   const postsByMonth = nodes.reduce((result, { node }) => {
     const key = moment(node.frontmatter.datetime).format('YYYY/MM');
@@ -19,6 +22,15 @@ export default function ArchiveTemplate({ pathContext }) {
 
   return (
     <Content>
+      <Helmet
+        title={`Archives - ${data.site.siteMetadata.title}`}
+        meta={[
+          {
+            name: 'description',
+            content: `Archives for ${data.site.siteMetadata.title}`
+          }
+        ]}
+      />
       {map(postsByMonth, (nodes, month) => (
         <div style={{ marginBottom: `1.5rem` }} key={month}>
           <PageTitle>
@@ -42,3 +54,11 @@ export default function ArchiveTemplate({ pathContext }) {
     </Content>
   );
 }
+
+export const pageQuery = graphql`
+  query ArchiveQuery {
+    site {
+      ...SiteMeta
+    }
+  }
+`;
