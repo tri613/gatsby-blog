@@ -21,7 +21,7 @@ const PostList = ({ nodes }) => (
     dataSource={nodes}
     renderItem={node => (
       <HoverableItem key={node.id}>
-        <Link to={node.fields.path}>
+        <Link to={node.fields.path} style={{ width: `100%` }}>
           <List.Item.Meta
             title={node.frontmatter.title}
             description={<Timestamp datetime={node.frontmatter.datetime} />}
