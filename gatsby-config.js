@@ -25,10 +25,10 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        excerpt_separator: `<!-- more -->`,
         plugins: [
-          {
-            resolve: `gatsby-remark-prismjs`
-          }
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-emoji` // <-- this line adds emoji
         ]
       }
     },

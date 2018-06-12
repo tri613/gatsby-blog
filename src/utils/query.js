@@ -2,6 +2,7 @@ export const blogPostQuery = graphql`
   fragment BlogPost on MarkdownRemark {
     id
     html
+    excerpt
     frontmatter {
       title
       datetime
@@ -14,13 +15,14 @@ export const blogPostQuery = graphql`
 `;
 
 export const extractBlogPostProperties = node => {
-  const { frontmatter, html } = node;
+  const { frontmatter, html, excerpt } = node;
   const { title, tags, datetime } = frontmatter;
 
   return {
     title,
     tags,
     datetime,
+    excerpt,
     content: html,
     url: node.fields.path
   };

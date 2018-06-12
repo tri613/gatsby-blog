@@ -13,7 +13,7 @@ const IndexPage = ({ data }) => (
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Post
         key={node.id}
-        readmore={true}
+        short={true}
         post={extractBlogPostProperties(node)}
         style={{ marginBottom: `1rem` }}
       />

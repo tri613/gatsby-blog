@@ -37,7 +37,7 @@ const ReadMoreButton = styled(Button)`
   }
 `;
 
-export const Post = ({ post, bodyComponent, readmore = false, ...rest }) => {
+export const Post = ({ post, bodyComponent, short = false, ...rest }) => {
   const { title, tags, datetime, url, content } = post;
   let body = null;
 
@@ -45,12 +45,12 @@ export const Post = ({ post, bodyComponent, readmore = false, ...rest }) => {
     body = bodyComponent;
   } else {
     const [publicContent, secretContent] = content
-      ? content.split(/<!--\s*read more\s*-->/i)
+      ? content.split(/<!--\smore\s-->/i)
       : ['', ''];
     body = (
       <React.Fragment>
         <section dangerouslySetInnerHTML={{ __html: publicContent }} />
-        {secretContent && readmore ? (
+        {secretContent && short ? (
           <div style={{ marginTop: `2rem` }}>
             <Link to={url}>
               <ReadMoreButton type="primary" ghost>
