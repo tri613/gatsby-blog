@@ -1,10 +1,11 @@
 import React from 'react';
 import Post from './../components/post';
-import { blogPostQuery } from './../utils/query';
+import { blogPostQuery, extractBlogPostProperties } from './../utils/query';
 
 export default function BlogTemplate({ data }) {
   const { markdownRemark } = data;
-  return <Post node={markdownRemark} />;
+  const postProps = extractBlogPostProperties(markdownRemark);
+  return <Post post={postProps} />;
 }
 
 export const pageQuery = graphql`

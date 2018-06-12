@@ -3,7 +3,7 @@ import Icon from 'antd/lib/icon';
 
 import { PageTitle } from './../components/title';
 import Post from './../components/post';
-import { blogPostQuery } from './../utils/query';
+import { blogPostQuery, extractBlogPostProperties } from './../utils/query';
 
 const IndexPage = ({ data }) => (
   <div>
@@ -12,9 +12,9 @@ const IndexPage = ({ data }) => (
     </PageTitle>
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Post
-        readmore={true}
         key={node.id}
-        node={node}
+        readmore={true}
+        post={extractBlogPostProperties(node)}
         style={{ marginBottom: `1rem` }}
       />
     ))}

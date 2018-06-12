@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Link from 'gatsby-link';
 import Icon from 'antd/lib/icon';
 import Card from 'antd/lib/card';
@@ -35,16 +37,17 @@ const ReadMoreButton = styled(Button)`
   }
 `;
 
-export const Post = ({ node, readmore = false, ...rest }) => {
-  const { frontmatter, html } = node;
-  const { title, tags, datetime } = frontmatter;
+export const Post = ({ post, readmore = false, ...rest }) => {
+  const { title, tags, datetime, url, content } = post;
 
-  const [publicContent, secretContent] = html.split(/<!--\s*read more\s*-->/i);
+  const [publicContent, secretContent] = content.split(
+    /<!--\s*read more\s*-->/i
+  );
 
   return (
     <article {...rest}>
       <Card>
-        <Link to={node.fields.path}>
+        <Link to={url}>
           <h1>{title}</h1>
         </Link>
         <section>
@@ -59,7 +62,7 @@ export const Post = ({ node, readmore = false, ...rest }) => {
         <section dangerouslySetInnerHTML={{ __html: publicContent }} />
         {secretContent && readmore ? (
           <div style={{ marginTop: `2rem` }}>
-            <Link to={node.fields.path}>
+            <Link to={url}>
               <ReadMoreButton type="primary" ghost>
                 Read more
               </ReadMoreButton>
@@ -71,6 +74,17 @@ export const Post = ({ node, readmore = false, ...rest }) => {
       </Card>
     </article>
   );
+};
+
+Post.propTypes = {
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    tags: PropTypes.array,
+    datetime: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired
+  }),
+  readmore: PropTypes.bool
 };
 
 export default Post;
