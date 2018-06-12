@@ -26,7 +26,11 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         excerpt_separator: `<!-- more -->`,
+<<<<<<< HEAD
         plugins: [`gatsby-remark-prismjs`]
+=======
+        plugins: [`gatsby-remark-prismjs`, `gatsby-remark-twemoji-shortcut`]
+>>>>>>> feature/add-emoji
       }
     },
     {

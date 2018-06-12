@@ -12,6 +12,6 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta ea magnam quis 
 * item 1
 * item 2
 
-<!--read more-->
+<!-- more -->
 
 Some secret message here
