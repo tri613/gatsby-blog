@@ -22,13 +22,16 @@ export default TagTemplate;
 
 export const query = graphql`
   query TagPageQuery($tag: [String]) {
-    allMarkdownRemark(filter: { frontmatter: { tags: { in: $tag } } }) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___datetime] }
+      filter: { frontmatter: { tags: { in: $tag } } }
+    ) {
       edges {
         node {
           id
-          html
           frontmatter {
             title
+            datetime
             tags
           }
           fields {
