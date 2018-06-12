@@ -51,7 +51,7 @@ export const Post = ({ post, bodyComponent, short = false, ...rest }) => {
       <React.Fragment>
         <section dangerouslySetInnerHTML={{ __html: publicContent }} />
         {secretContent && short ? (
-          <div style={{ marginTop: `2rem` }}>
+          <div style={{ marginTop: `1.5rem` }}>
             <Link to={url}>
               <ReadMoreButton type="primary" ghost>
                 Read more
