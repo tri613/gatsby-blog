@@ -9,20 +9,25 @@ const WhiteList = styled(List)`
   background-color: rgba(255, 255, 255, 0.4);
 `;
 
+const HoverableItem = styled(List.Item)`
+  &:hover {
+    background-color: ${props => props.theme.colors.primary03};
+  }
+`;
+
 const PostList = ({ nodes }) => (
   <WhiteList
     bordered
-    itemLayout="vertical"
     dataSource={nodes}
     renderItem={node => (
-      <List.Item key={node.id}>
+      <HoverableItem key={node.id}>
         <Link to={node.fields.path}>
           <List.Item.Meta
             title={node.frontmatter.title}
             description={<Timestamp datetime={node.frontmatter.datetime} />}
           />
         </Link>
-      </List.Item>
+      </HoverableItem>
     )}
   />
 );
