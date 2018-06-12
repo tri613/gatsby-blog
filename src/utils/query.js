@@ -12,6 +12,7 @@ export const blogPostQuery = graphql`
     }
   }
 `;
+
 export const extractBlogPostProperties = node => {
   const { frontmatter, html } = node;
   const { title, tags, datetime } = frontmatter;

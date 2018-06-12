@@ -37,12 +37,33 @@ const ReadMoreButton = styled(Button)`
   }
 `;
 
-export const Post = ({ post, readmore = false, ...rest }) => {
+export const Post = ({ post, bodyComponent, readmore = false, ...rest }) => {
   const { title, tags, datetime, url, content } = post;
+  let body = null;
 
-  const [publicContent, secretContent] = content.split(
-    /<!--\s*read more\s*-->/i
-  );
+  if (bodyComponent && React.isValidElement(bodyComponent)) {
+    body = bodyComponent;
+  } else {
+    const [publicContent, secretContent] = content
+      ? content.split(/<!--\s*read more\s*-->/i)
+      : ['', ''];
+    body = (
+      <React.Fragment>
+        <section dangerouslySetInnerHTML={{ __html: publicContent }} />
+        {secretContent && readmore ? (
+          <div style={{ marginTop: `2rem` }}>
+            <Link to={url}>
+              <ReadMoreButton type="primary" ghost>
+                Read more
+              </ReadMoreButton>
+            </Link>
+          </div>
+        ) : (
+          <section dangerouslySetInnerHTML={{ __html: secretContent }} />
+        )}
+      </React.Fragment>
+    );
+  }
 
   return (
     <article {...rest}>
@@ -59,18 +80,7 @@ export const Post = ({ post, readmore = false, ...rest }) => {
           </div>
         </section>
         <Divider />
-        <section dangerouslySetInnerHTML={{ __html: publicContent }} />
-        {secretContent && readmore ? (
-          <div style={{ marginTop: `2rem` }}>
-            <Link to={url}>
-              <ReadMoreButton type="primary" ghost>
-                Read more
-              </ReadMoreButton>
-            </Link>
-          </div>
-        ) : (
-          <section dangerouslySetInnerHTML={{ __html: secretContent }} />
-        )}
+        {body}
       </Card>
     </article>
   );
@@ -82,7 +92,7 @@ Post.propTypes = {
     tags: PropTypes.array,
     datetime: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired
+    content: PropTypes.string
   }),
   readmore: PropTypes.bool
 };
