@@ -5,11 +5,11 @@ import styled from 'styled-components';
 
 import { Timestamp } from './post';
 
-const WhiteList = styled(List)`
+export const WhiteList = styled(List)`
   background-color: rgba(255, 255, 255, 0.4);
 `;
 
-const HoverableItem = styled(List.Item)`
+export const HoverableItem = styled(List.Item)`
   &:hover {
     background-color: ${props => props.theme.colors.primary03};
   }
