@@ -10,7 +10,7 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta ea magnam quis 
 ## Cool section
 
 * item 1
-* item 2
+* item 2 :cry:
 
 ```javascript
 const p1 = Promise.resolve('p1');
@@ -28,6 +28,8 @@ Promise.all([p1, p2, p3])
 <!-- more -->
 
 Some secret message here
+
+:poop::sleepy:
 
 ```javascript
 async function greetFromAjaxRequest(name) {
