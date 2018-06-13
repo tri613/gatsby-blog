@@ -1,0 +1,3 @@
+[submodule "plugins/gatsby-remark-twemoji-shortcut"]
+	path = plugins/gatsby-remark-twemoji-shortcut
+	url = https://github.com/tri613/gatsby-remark-twemoji-shortcut.git
