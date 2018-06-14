@@ -7,6 +7,7 @@
     "antd": "^3.5.4",
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
+    "gatsby-remark-twemoji-shortcut": "^0.9.5",
     "netlify-cms": "^1.8.4",
     "polished": "^1.9.2",
     "prismjs": "^1.14.0",
