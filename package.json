@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "tri-gatsby-blog",
+  "description": "My gatsby blog.",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Trina Lu",
   "dependencies": {
     "antd": "^3.5.4",
     "gatsby": "^1.9.247",
