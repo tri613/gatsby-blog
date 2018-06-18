@@ -6,4 +6,12 @@ published: true
 ---
 Hi! This is my first gatsby blog. Cool! 
 
+fishing! --- ><>
+
+`beer&peanuts`
+
+```javascript
+() => Promise.resolve()
+```
+
 :sagittarius::1st_place_medal::cry:🤩
