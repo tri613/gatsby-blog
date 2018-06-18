@@ -76,7 +76,7 @@ export const Post = ({ post, bodyComponent, short = false, ...rest }) => {
             <Timestamp datetime={datetime} />
           </p>
           <div>
-            <Tags tags={tags} />
+            <Tags tags={tags.filter(tag => !!tag)} />
           </div>
         </section>
         <Divider />
