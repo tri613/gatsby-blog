@@ -42,6 +42,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     {
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___datetime] }
+        filter: { frontmatter: { published: { eq: true } } }
       ) {
         edges {
           node {
@@ -49,6 +50,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             frontmatter {
               title
               datetime
+              published
             }
             fields {
               path
