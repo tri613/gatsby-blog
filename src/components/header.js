@@ -3,19 +3,20 @@ import Link from 'gatsby-link';
 
 import Divider from 'antd/lib/divider';
 import Icon from 'antd/lib/icon';
-import { Row, Col } from 'antd/lib/grid';
+import { Row } from 'antd/lib/grid';
 
 import { Href, NewTabHref } from './../components/href';
 import { SiteTitle } from './../components/title';
 import { CoolAvatar } from './../components/avatar';
+import styled from 'styled-components';
 
 const Header = ({ siteTitle }) => (
   <header style={{ paddingTop: '1.5rem' }}>
-    <Row gutter={24} type="flex" align="middle">
-      <Col span={4}>
+    <Row type="flex" align="start">
+      <div style={{ flexBasis: `80px`, marginRight: `1.5rem` }}>
         <CoolAvatar src="https://i.imgur.com/Fs7JXQQ.jpg" border="3px" />
-      </Col>
-      <Col span={20}>
+      </div>
+      <div>
         <SiteTitle style={{ marginBottom: '.8rem' }} to="/">
           {siteTitle}
         </SiteTitle>
@@ -32,7 +33,7 @@ const Header = ({ siteTitle }) => (
             <Icon type="mail" />
           </Href>.
         </p>
-      </Col>
+      </div>
     </Row>
     <nav style={{ margin: '1rem 0' }}>
       <Link to="/">Home</Link>
