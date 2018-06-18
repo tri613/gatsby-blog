@@ -28,6 +28,7 @@ export const indexQuery = graphql`
     allMarkdownRemark(
       limit: 5
       sort: { fields: [frontmatter___datetime], order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
     ) {
       edges {
         node {
