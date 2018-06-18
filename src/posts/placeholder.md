@@ -1,11 +1,8 @@
 ---
-title: Hello world
-datetime: 2018-06-18 09:00:00
-tags: ["greeting"]
+title: placeholder
+tags: [""]
+datetime: 1992-12-26 21:07:32
+published: true
 ---
 
-Hello world! 😄:1st_place_medal: `<><`
-
-```
-:smile_cat:
-```
+Just some content

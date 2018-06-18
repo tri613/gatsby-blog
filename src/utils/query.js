@@ -7,6 +7,7 @@ export const blogPostQuery = graphql`
       title
       datetime
       tags
+      published
     }
     fields {
       path

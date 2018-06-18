@@ -8,9 +8,21 @@ import { PageTitle } from '../components/title';
 import { WhiteList, HoverableItem } from '../components/postList';
 
 export default function Tags({ data }) {
-  const group = data.allMarkdownRemark.group.sort(
-    (a, b) => a.totalCount < b.totalCount
-  );
+  const group = data.allMarkdownRemark.group
+    ? data.allMarkdownRemark.group
+      .filter(row => !!row.fieldValue)
+      .map(row => {
+        const totalCount = row.edges.reduce((sum, current) => {
+          return current.node.frontmatter.published ? sum + 1 : sum;
+        }, 0);
+        return {
+          ...row,
+          totalCount
+        };
+      })
+      .sort((a, b) => a.totalCount < b.totalCount)
+    : [];
+
   return (
     <Content>
       <PageTitle>
@@ -40,6 +52,13 @@ export const query = graphql`
       group(field: frontmatter___tags) {
         totalCount
         fieldValue
+        edges {
+          node {
+            frontmatter {
+              published
+            }
+          }
+        }
       }
     }
   }
