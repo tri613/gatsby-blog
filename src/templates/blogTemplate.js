@@ -1,35 +1,40 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import Helmet from 'react-helmet';
+
+import Post from './../components/post';
+import { Content } from './../components/layout';
+import {
+  blogPostQuery,
+  extractBlogPostProperties,
+  siteMetaQuery
+} from './../utils/query';
 
 export default function BlogTemplate({ data }) {
   const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
-
-  return <article>
-    <h2>{frontmatter.title}</h2>
-    <section style={{ marginBottom: '1.5rem' }}>
-      {frontmatter.date}
-      <br />
-      {frontmatter.tags.map(tag => 
-        <span key={tag} style={{ marginRight: '.5rem' }}>
-          <Link to={`/tags/${tag}`}>#{tag}</Link>
-        </span>
-      )}
-    </section>
-    <section dangerouslySetInnerHTML={{ __html: html }} />
-  </article>;
+  const postProps = extractBlogPostProperties(markdownRemark);
+  return (
+    <Content>
+      <Helmet
+        title={`${postProps.title} - ${data.site.siteMetadata.title}`}
+        meta={[
+          {
+            name: 'description',
+            content: postProps.description || postProps.excerpt
+          }
+        ]}
+      />
+      <Post post={postProps} />
+    </Content>
+  );
 }
 
 export const pageQuery = graphql`
-  query BlogPostQuery($title: String!) {
-    markdownRemark(frontmatter: { title: { eq: $title } }) {
-      html
-      frontmatter {
-        date(formatString: "YYYY/MM/DD HH:mm:ss")
-        path
-        title
-        tags
-      }
+  query BlogPostQuery($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      ...BlogPost
+    }
+    site {
+      ...SiteMeta
     }
   }
 `;
