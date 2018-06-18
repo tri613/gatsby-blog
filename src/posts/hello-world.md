@@ -7,3 +7,9 @@ published: true
 
 Hi! This is my first gatsby blog. Cool! :sagittarius: :1st_place_medal: :sparkles:
 :smile:
+
+fishing! ><> --- `<><`
+
+```js
+() => Promise.resolve()
+```
