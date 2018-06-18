@@ -28,11 +28,14 @@ export default () => injectGlobal`
   * {
     box-sizing: border-box;
   }
+  
+  /* inline */
+  :not(pre) > code[class*='language-'] {
+    border-radius: 0.1rem;
+    padding: .1rem 0.3rem;
+  }
 
-  
-  
-  
-  :not(pre) > code[class*='language-'],
+  /* code-block */
   pre[class*='language-'] {
     border-radius: 0.1rem;
     margin: 1rem 0;
