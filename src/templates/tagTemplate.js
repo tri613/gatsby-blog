@@ -6,7 +6,7 @@ import { Content } from './../components/layout';
 import { PageTitle } from './../components/title';
 import PostList from './../components/postList';
 
-import { siteMetaQuery } from './../utils/query';
+import { siteMetaQuery, blogPostQuery } from './../utils/query';
 
 const TagTemplate = ({ pathContext, data }) => {
   const { tag } = pathContext;
@@ -40,19 +40,11 @@ export const query = graphql`
     }
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___datetime] }
-      filter: { frontmatter: { tags: { in: $tag } } }
+      filter: { frontmatter: { tags: { in: $tag }, published: { eq: true } } }
     ) {
       edges {
         node {
-          id
-          frontmatter {
-            title
-            datetime
-            tags
-          }
-          fields {
-            path
-          }
+          ...BlogPost
         }
       }
     }

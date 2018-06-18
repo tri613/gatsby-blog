@@ -42,6 +42,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     {
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___datetime] }
+        filter: { frontmatter: { published: { eq: true } } }
       ) {
         edges {
           node {
@@ -49,6 +50,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             frontmatter {
               title
               datetime
+              published
             }
             fields {
               path
@@ -67,34 +69,41 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      createPage({
-        path: node.fields.path,
-        component: blogPostTemplate,
-        context: {
-          id: node.id,
-          title: node.frontmatter.title
-        } // additional data can be passed via context
+    if (result.data.allMarkdownRemark && result.data.allMarkdownRemark.edges) {
+      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        createPage({
+          path: node.fields.path,
+          component: blogPostTemplate,
+          context: {
+            id: node.id,
+            title: node.frontmatter.title
+          } // additional data can be passed via context
+        });
       });
-    });
-
-    result.data.allMarkdownRemark.group.forEach(row => {
-      createPage({
-        path: `tags/${row.fieldValue}/`,
-        component: tagTemplate,
-        context: {
-          tag: row.fieldValue
-        }
-      });
-    });
+    }
 
     createPaginatedPages({
-      edges: result.data.allMarkdownRemark.edges,
+      edges:
+        result.data.allMarkdownRemark && result.data.allMarkdownRemark.edges
+          ? result.data.allMarkdownRemark.edges
+          : [],
       createPage: createPage,
       pageTemplate: archivesTemplate,
       pageLength: 10, // This is optional and defaults to 10 if not used
       pathPrefix: `archives`, // This is optional and defaults to an empty string if not used
       context: {} // This is optional and defaults to an empty object if not used
     });
+
+    if (result.data.allMarkdownRemark && result.data.allMarkdownRemark.group) {
+      result.data.allMarkdownRemark.group.forEach(row => {
+        createPage({
+          path: `tags/${row.fieldValue}/`,
+          component: tagTemplate,
+          context: {
+            tag: row.fieldValue
+          }
+        });
+      });
+    }
   });
 };
