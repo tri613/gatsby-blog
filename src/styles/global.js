@@ -18,7 +18,7 @@ export default () => injectGlobal`
       }
     }
     ::-webkit-scrollbar-track {
-      background-color: ${darken(0.05, theme.colors.bg)};
+      background-color: ${theme.colors.bg};
     }
     ::-webkit-scrollbar {
       width: 13px;
@@ -29,12 +29,15 @@ export default () => injectGlobal`
     box-sizing: border-box;
   }
 
-  
-  
-  
-  :not(pre) > code[class*='language-'],
+  /* inline code */
+  :not(pre) > code[class*='language-'] {
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.2rem;
+  }
+
+  /* code block */
   pre[class*='language-'] {
-    border-radius: 0.1rem;
+    border-radius: 0.2rem;
     margin: 1rem 0;
     padding: 1.5rem 1.2rem;
     letter-spacing: 0.5px;
